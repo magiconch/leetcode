@@ -48,6 +48,24 @@ void shellSort(int A[], int n) {
     // TODO: 这里需要将A[0]进行初始化 A[0] = null;
 }
 
+// 冒泡排序
+void BubbleSort(int A[], int n) {
+    for (int i = 0; i < n - 1; ++i) {
+        bool flag = false;
+        for (int j = n - 1; j > i; j--) { // 从后往前进行一次冒泡排序，把最小的值放在首位
+            if (A[j - 1] > A[j]) {
+                swap(A[j - 1], A[j]);
+                flag = true;
+            }
+        }
+        if (flag == false) {
+            return; // 本次遍历没有发生交换， 证明已经有序
+        }
+    }
+}
+
+// 快速排序
+void
 
 
 void testSort() {
