@@ -1,0 +1,17 @@
+{
+  "name": "tscode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "https://web.hellotalk8.com/im/file/https%3A%2F%2Fsg-ht-c.oss-ap-southeast-1.aliyuncs.com%2Fcvoc%2Fsg-ht-c%2F20211213%2F115324855_2a08be3058af2fd9da60a0f54ead6569.hta"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  },
+  "dependencies": {
+    "typescript": "^4.5.3"
+  }
+}
