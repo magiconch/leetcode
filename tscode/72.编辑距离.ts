@@ -36,7 +36,7 @@ function soultion_72_2(word1: string, word2: string): number {
     // 我们需要明确的是，我们的编辑距离是相对于word1进行的编辑
 
     // 备忘录
-    const memo: number[][] = [];
+    const memo: Map<number[], number> = new Map();
     function dp(i:number, j: number): number {
         if (i == -1) { // 表明word1已经遍历完成
             return j + 1; // 把word2剩下的所有字符插入到word1
@@ -45,21 +45,20 @@ function soultion_72_2(word1: string, word2: string): number {
             return i + 1; // 把word1剩下的所有字符删除
         }
 
+        if (memo.has([i, j])) {
+            return memo.get([i, j]) as number;
+        }
+
         if (word1[i] == word2[j]) {
-            if (!memo[i] && !memo[i][j]) {
-                memo[i][j] = dp(i - 1, j - 1);
-            }
-            return memo[i][j];
+            memo.set([i, j], dp(i - 1, j - 1));
         } else {
-            if (!memo[i] && !memo[i][j]) {
-                memo[i][j] = Math.min(
+                memo.set([i, j], Math.min(
                     dp(i - 1, j), // 删除当前的字符， word1的指针往前移动
                     dp(i, j - 1), // 添加一个字符到word1，word2的指针往前移动
                     dp(i - 1, j - 1) // 替换当前字符，指针都往前移动
-                ) + 1;
-            }
-            return memo[i][j];
+                ) + 1);
         }
+        return memo.get([i, j]) as number;
     }
     return dp(word1.length - 1, word2.length - 1);
 }
@@ -98,3 +97,4 @@ function soultion_72_3(word1: string, word2: string): number {
 }
 // @lc code=end
 
+console.log( minDistance("horse", "ros") );
