@@ -6,18 +6,27 @@
 
 // @lc code=start
 function longestCommonPrefix(strs: string[]): string {
-    let str = '', i = 0;
-    while(strs[0][i]){
-        for(let s of strs){
-            if(s[i] !== strs[0][i]){
-                return str;
+    if (strs.length <= 0) {
+        return "";
+    }
+    if (strs[0].length <= 0) {
+        return "";
+    }
+    let i: number = 0;
+    let result: string = '';
+    while(i < strs[0].length) {
+        let compareWord: string = strs[0][i];
+        for (const iterator of strs) {
+            if (compareWord != iterator[i]) {
+                return result;
             }
         }
-        str += strs[0][i];
+        result += compareWord;
         i++;
     }
-    return str;
+    return result;
 
 };
 // @lc code=end
 
+longestCommonPrefix(["a"]);
