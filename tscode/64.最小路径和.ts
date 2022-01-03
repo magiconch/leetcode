@@ -51,6 +51,34 @@ function solution_64_2(grid: number[][]): number {
     return helpfunc(rowLen - 1, columnLen - 1);
 };
 
+function solution_64_3(grid: number[][]): number {
+    const rowLen: number = grid.length;
+    const columnLen: number = grid[0].length;
+    const dp: number[][] = new Array(rowLen)
+                                .fill(new Array(columnLen).fill(-1));
+
+    dp[0][0] = grid[0][0];
+    for (let i = 0; i < rowLen; i++) {
+        dp[i][0] = dp[i - 1][0] + grid[i][0];
+         
+    }
+
+    for (let j = 0; j < columnLen; j++) {
+        dp[0][j] = dp[0][j - 1] + grid[0][j];
+    }
+
+    for (let i = 1; i < rowLen; i++) {
+        for (let j = 1; j < columnLen; j++) {
+            dp[i][j] = Math.min(
+                dp[i - 1][j],
+                dp[i][j - 1]
+            ) + grid[i][j];
+        }
+    }
+
+    return dp[rowLen - 1][rowLen - 1];
+};
+
 // @lc code=end
 
 const result = minPathSum([
