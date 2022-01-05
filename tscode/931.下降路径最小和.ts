@@ -74,7 +74,6 @@ function solution_931_2(matrix: number[][]): number {
                 getValue(i - 1, j),
                 getValue(i - 1, j + 1)
                 ) + matrix[i][j];
-            
         }
     }
     
