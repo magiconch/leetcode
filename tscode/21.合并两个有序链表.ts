@@ -17,34 +17,30 @@
  * }
  */
 
-class ListNode {
-    val: number
-    next: ListNode | null
-    constructor(val?: number, next?: ListNode | null) {
-        this.val = (val === undefined ? 0 : val)
-        this.next = (next === undefined ? null : next)
-    }
-}
+// class ListNode {
+//     val: number
+//     next: ListNode | null
+//     constructor(val?: number, next?: ListNode | null) {
+//         this.val = (val === undefined ? 0 : val)
+//         this.next = (next === undefined ? null : next)
+//     }
+// }
 
 function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
-    let node1: ListNode | null = list1;
-    let node2: ListNode | null = list2;
-    if (node1 == null) {
-        return node2;
-    } else if (node2 == null) {
-        return node1;
-    }
-    let newList: ListNode = new ListNode();
-    
-    while(node1 != null && node2 != null) {
-        if (node1.val >= node2.val) {
-            newList.next = node2;
-            newList = newList.next; 
-            node2 = node2.next;
+    const result = new ListNode(0);
+    let cur = result;
+    while(list1 && list2) {
+        if (list1.val < list2.val) {
+            cur.next = list1;
+            list1 = list1.next;
+        }else {
+            cur.next = list2;
+            list2 = list2.next;
         }
-        
-
+        cur = cur.next;
     }
+    cur.next = list1 === null ? list2 : list1;
+    return result.next;
 };
 // @lc code=end
 
