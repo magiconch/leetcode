@@ -9,6 +9,26 @@ function maxSubArray(nums: number[]): number {
     return solution_53_1(nums);
 };
 
+
+function solution53_2(nums: number[]): number {
+    // 考虑优化步骤
+    let len = nums.length;
+
+    if (len === 0) {
+        return 0;
+    }
+
+    const dp: number[] = [];
+    dp[0] = nums[0];
+
+    for (let index = 0; index < len; index++) {
+        dp[index] = Math.max(nums[index], nums[index] + dp[index - 1]);
+    }
+
+    return Math.max(...dp);
+
+}
+
 function solution_53_1(nums: number[]): number {
     if (nums.length < 1) {
         return 0;
