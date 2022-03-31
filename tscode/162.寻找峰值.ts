@@ -12,7 +12,7 @@ function findPeakElement(nums: number[]): number {
 
 
 
-function solution2(nums:number[]): number {
+function solution_162_2(nums:number[]): number {
     const n = nums.length;
     let index: number = Math.ceil(nums.length / 2);
 
